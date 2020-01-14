@@ -1,0 +1,97 @@
+<section class="bigtoe-profile">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6 col-xs-6">
+             <img src="{{teacherData.profile_picture}}" class="bigtoe-profile-pic" />
+          </div>
+          <div class="col-md-6 col-xs-6">
+             <div class="bigtoe-yoga-tog panel-heading active" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                   <a role="button"  href="javascript:;" (click)="toggleShowDiv('divB')">
+                   <span>Yoga <i class="fa fa-chevron-down icon-rotate" aria-hidden="true"></i>
+                   </span>
+                   </a>
+                </h4>
+             </div>
+             <div [@slideInOut]="animationStateCategory" class=" divB">
+                <div class="bigtoe-radio-bx">
+               
+                     <label class="radio-outer"> <a data-toggle="tab" href="#Flow">Flow </a>
+                         <input type="radio" check name="radio">
+                         <span class="checkmark"></span>
+                         </label>
+                         
+                         <label class="radio-outer"> <a data-toggle="tab" href="#Alignment">Alignment</a>
+                         <input type="radio" name="radio">
+                         <span class="checkmark"></span>
+                         </label>
+                   
+                 </div>
+                <div class="tab-content">
+                   <div id="Flow" class="tab-pane fade in ">
+                      <p>Flow 60 minute session Hatha Based Flow focusing on breath, alignment, and creating space and ease in the body. <a href="#" class="more-btn">More </a>
+                      </p>
+                   </div>
+                   <div id="Alignment" class="tab-pane fade">
+                      <p>Alignment 60 minute session Hatha Based Flow focusing on breath, alignment, and creating space and ease in the body. <a href="#" class="more-btn">More </a>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+</section>
+<section class="bigtoe-profile-content">
+ <div class="container">
+    <h3 class="title-head">{{teacherData.firstname}} {{teacherData.lastname}}</h3>
+    <p>“{{teacherData.adjective1}} and {{teacherData.adjective2}}”</p>
+    <ul class="bigtoe-ratings">
+       <li><i class="fa fa-star" aria-hidden="true"></i>
+       <li><i class="fa fa-star" aria-hidden="true"></i>
+       <li><i class="fa fa-star" aria-hidden="true"></i>
+       <li><i class="fa fa-star" aria-hidden="true"></i>
+       <li><i class="fa fa-star" aria-hidden="true"></i></li>
+       <span class="bigtoe-rate">({{teacherData.number_of_ratings}})</span>
+    </ul>
+    
+     <div class="bigtoe-setting-bx"><button type="button" class="btn bigtoe-setting-btn" (click)="toggleShowDiv('divA')">View Details <i class="fa fa-angle-down"></i></button>
+        <div id="demo" [@slideInOut]="animationState" class="divA">
+            <h4>Highlights </h4>
+            <p>{{teacherData.summary}}
+            </p>
+            <h4>About </h4>
+            <p>{{teacherData.about}}</p>
+            <h4>Trainings </h4>
+            <p *ngFor="let trainingData of teacherData.teacher_educations">{{trainingData.degree_name}}</p>
+            <h4>Session </h4>
+            <p>Each session is 60 mins long.</p>
+            <h4>Cancellation Policy </h4>
+            <p>BurnStrong is located at 46 W 46th st between 5th and 6th Ave and is close to Bryant Park and Grand Central.</p>
+      </div>
+      </div>
+    
+   
+    <h4>Number of people</h4>
+    <div class="bigtoe-increament">
+       <i class="fa fa-user" aria-hidden="true"></i>
+       <input type="button" (click)="count = count-1" value="-" id="subs" class="btn btn-default pull-left minus-btn" style="margin-right: 2%" [disabled]="count==1" />&nbsp;
+       <input type="text"  class="onlyNumber form-control " id="noOfRoom" value="{{count}}" name="noOfRoom" />&nbsp;
+       <input type="button" (click)="count = count+1" value="+" id="adds" class="btn btn-default add-btn" />
+    </div>
+    <h4>Schedule</h4>
+    <div class="bigtoe-calender-title">
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+<h4>Sat, Dec 7</h4> <i class="fa fa-chevron-right" aria-hidden="true"></i>
+    </div>
+
+
+    <ul class="bigtoe-calender-inner">
+        <li *ngFor="let slotData of teacherData.slots">
+            <a>{{slotData}}</a>
+        </li> 
+    </ul>
+    </div>
+    <div class="bigtoe-shadow"><a [routerLink]="'/booking-details'" class="bigtoe-time-btn">Select Time</a></div>
+ 
+</section>

@@ -1,0 +1,66 @@
+<section class="bigtoe-profile-content bigtoe-booking-detail">
+    <h4 class="bigote-header-title">Booking Details</h4>
+    <div class="container">
+        <form>
+            <div class="bigtoe-booking-form">
+                <div class="form-group">
+                    <label>Phone Number <span class="bitgoe-form-required">*</span></label>
+                    <h6 class="bigtoe-form-txt">+380976210563</h6>
+                    <a [routerLink]="'/booking-details-phone'" class="bigtoe-form-rightarw"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+                <div class="form-group">
+                    <label >Address Details</label>
+                    <div class="bigtoe-form-chkbx"><div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="option1">
+                            &nbsp;
+                            <label class="form-check-label" >Has Dogs</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox"  value="option2">
+                            &nbsp;
+                            <label class="form-check-label" >Has Cats</label>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Flight of stairs</label>
+                    <div class="bigtoe-increament">
+                        <input type="button" (click)="count = count-1" value="-" id="subs" class="btn btn-default pull-left minus-btn" style="margin-right: 2%" [disabled]="count==1">&nbsp;
+                        <input type="text" class="onlyNumber form-control " id="noOfRoom" value="{{count}}" name="noOfRoom"  min="0">&nbsp;
+                        <input type="button" (click)="count = count+1" value="+" id="adds" class="btn btn-default add-btn">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Directions(optionals)</label>
+                    <a [routerLink]="'/booking-details-directions'" class="bigtoe-form-rightarw"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+
+
+                <div class="form-group">
+                    <label >Add Ons</label>
+                    <div class="bigtoe-form-chkbx"><div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" value="option1">
+                            &nbsp;
+                            <label class="form-check-label" >Yoga Mat</label>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Note</label>
+                    <a [routerLink]="'/booking-details-note'" class="bigtoe-form-rightarw"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                </div>
+
+                <a type="submit" class="bigtoe-time-btn" [routerLink]="'/payment-details'" >Continue Booking</a>
+            </div>
+        </form>
+
+
+
+
+    </div>
+</section>

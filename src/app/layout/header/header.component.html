@@ -1,0 +1,71 @@
+<header class="header bigtoe-header">
+   <nav class="navbar navbar-default">
+      <div class="container">
+         <!-- Brand and toggle get grouped for better mobile display -->
+         <div class="navbar-header">
+            <a class="bigtoe-arrow" onclick="history.back(-1)"><img src="assets/images/arrow.png"></a>
+            <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt="Logo"></a>
+            <div class="bigtoe-toggle-signup">
+               <div class="dropdown list-view bigtoe-login-toggle">
+                  <div class="tab-dropdown" id="dropdown-toggleId">
+                     <div id="dropdown" (click)="dropClick()"  >
+                     <i class="fa fa-user bigtoe-login-icn"
+                        aria-hidden="true"></i>
+                     <i class="fa fa-angle-down"></i></div>
+                     <ul class="nav" role="tablist" #navdrop id="navdrop">
+                        <li class="nav-item " *ngIf="showLogin">
+                           <a class="nav-link " [routerLink]="'/login'" role="tab" data-toggle="tab">Login</a>
+                        </li>
+                        <li class="nav-item" *ngIf="showLogin">
+                           <a class="nav-link"role="tab" [routerLink]="'/register'" data-toggle="tab">Signup
+                           </a>
+                        </li>
+                        <li class="nav-item" *ngIf="!showLogin">
+                           <a class="nav-link"role="tab" (click)="logout()" data-toggle="tab">Logout
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+                 
+               </div>
+            </div>
+         </div>
+         <!-- Collect the nav links, forms, and other content for toggling -->
+         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+               <li class="dropdown list-view ">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Classes <i
+                        class="fa fa-angle-down"></i></a>
+                  <div class="dropdown-menu">
+                     <a class="dropdown-item" href="#">Overview</a>
+                     <a class="dropdown-item" href="#">Browse Studios</a>
+                  </div>
+               </li>
+               <li class="#"><a href="#">Appointments </a></li>
+               <li class=""><a href="#">Corporate</a></li>
+               <li class="dropdown list-view ">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Partner <i
+                        class="fa fa-angle-down"></i></a>
+                  <div class="dropdown-menu">
+                     <a class="dropdown-item" href="#">Studio</a>
+                     <a class="dropdown-item" href="#">Provider</a>
+                  </div>
+               </li>
+               <li class="app-store">
+                  <a href="https://apps.apple.com/us/app/bigtoe-yoga/id1198583047" target="_blank">
+                     <img src="assets/images/app-store.png" alt="app-store">
+                  </a>
+               </li>
+               <li class="app-store">
+                  <a href="https://play.google.com/store/apps/details?id=fit.bigtoe.bigtoeyoga&amp;hl=en"
+                     target="_blank">
+                     <img src="assets/images/google-play.png" alt="google-play">
+                  </a>
+               </li>
+            </ul>
+         </div>
+         <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container-fluid -->
+   </nav>
+</header>

@@ -1,0 +1,107 @@
+
+
+<div class="arvind_widget_banner app-view-screen arvind_widget_signup_banner">
+    <div class="">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12">
+
+                    <div class="arvind_widget_contact-view arvind_widget_login-form">
+                        <div class="row arvind_widget_fb_btn">
+                            <button type="button" class="arvind_widget_facebookLoginBtn">
+
+                                <svg class="arvind_widget_fb_svg" width="10" height="21" viewBox="0 0 10 21" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M8.98499 10.6409H6.3155V20.6602H2.27099V10.6409H0.347412V7.11973H2.27099V4.84113C2.27099 3.21169 3.0265 0.660156 6.3515 0.660156L9.34741 0.672997V4.09089H7.17368C6.81713 4.09089 6.31577 4.2734 6.31577 5.05069V7.12301H9.33835L8.98499 10.6409Z"
+                                        fill="white" />
+                                </svg> &nbsp;
+                                <span> Sign Up With Facebook</span>
+                            </button>
+                        </div>
+
+                        <div class="arvind_widget_textalign">
+                            <span>
+                                <p>or</p>
+                            </span>
+                        </div>
+                        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="arvind_widget_contact-form">
+
+                            <div class="row">
+                                <div class="col-sm-6 col-xs-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>First Name</label>
+                                        <input type="text" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+                                            formControlName="firstName" class="form-control" placeholder="First Name">
+                                       
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 col-xs-6 col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <label>Last Name</label>
+                                        <input type="text" formControlName="lastName" class="form-control"
+                                            placeholder="Last Name" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        <input type="email" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.email">Invalid E-mail address</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" formControlName="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+                                        
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-xs-12">
+                                    <div class="form-group">
+                                        <label>Confirm Password</label>
+                                        <input type="password" formControlName="confirm_password" class="form-control"
+                                            placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && f.confirm_password.errors }">
+                                            <div *ngIf="submitted && f.confirm_password.errors" class="invalid-feedback">
+                                                <div *ngIf="f.confirm_password.errors.mustMatch">Passwords must match</div>
+                                            </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-default com-btn-view arvind_widget_btn">Sign
+                                    Up</button>
+                            </div>
+                            <br>
+                            <div class="arvind_widget_login">
+                                <span>Have account?&nbsp;&nbsp;<a href="#">Log in</a></span>
+                            </div>
+                            <br>
+                            <div class="arvind_widget_termsConditions">
+                                <a href="">By signing up, you agree to our <span>terms of use</span> and <span>privacy
+                                        policy</span></a>
+                            </div>
+                            <br>
+                            <br>
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

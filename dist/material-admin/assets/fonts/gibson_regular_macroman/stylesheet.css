@@ -1,0 +1,37 @@
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2016 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      Canada Type
+ * License URL: https://www.fontspring.com/licenses/canada-type/webfont
+ *
+ *
+ */
+
+@font-face {
+    font-family: 'gibsonregular';
+    src: url('Gibson-Regular-webfont.eot');
+    src: url('Gibson-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Gibson-Regular-webfont.woff2') format('woff2'),
+         url('Gibson-Regular-webfont.woff') format('woff'),
+         url('Gibson-Regular-webfont.ttf') format('truetype'),
+         url('Gibson-Regular-webfont.svg#gibsonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
