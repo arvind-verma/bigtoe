@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, FormsModule, Validators } from '@angular/forms';
-// import { Http, Response, Headers, RequestOptions } from '@angular/http'; 
 import { AuthenticationService } from '../../services/authentication.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-// import { Observable } from 'rxjs/Observable';
+import { AuthService, FacebookLoginProvider, SocialUser } from 'angularx-social-login';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-login',
@@ -13,18 +13,21 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  user: SocialUser;
+  loggedIn: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthenticationService,
-    private http: HttpClient
+    private http: HttpClient,
+    private appService : AppService
   ) { }
 
   ngOnInit() {
     if (localStorage.getItem('data') != 'undefined' && localStorage.getItem('data') != null) {
       this.router.navigate(['/map']);
     }
-
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -36,9 +39,8 @@ export class LoginComponent implements OnInit {
   }
 
   submitted: boolean = false;
+
   onSubmit() {
-
-
     this.submitted = true;
     if (this.loginForm.invalid) {
       return;
@@ -48,8 +50,14 @@ export class LoginComponent implements OnInit {
       this.authService.authLogin(formDatas).subscribe(
         data => {
           if (data['ResponseCode'] == 1) {
+            debugger;
             localStorage.setItem('data', JSON.stringify(data));
+            let statusData = {
+              'show_Login': 'false'
+            }
+            this.appService.setData(statusData);
             this.router.navigate(['/map']);
+            location.reload();
           }
           else {
             alert("error");
@@ -62,5 +70,4 @@ export class LoginComponent implements OnInit {
       )
     }
   }
-
 }

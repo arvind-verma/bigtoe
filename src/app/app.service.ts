@@ -15,6 +15,16 @@ export class AppService {
   signatureData : any[] = [];
   getBtnSts : string;
 
+  private messageData = new BehaviorSubject({});
+  getData = this.messageData.asObservable();
+
+  setData(data :any) {
+    this.messageData.next(data);
+  }
+
+  
+
+
   private messageSource = new BehaviorSubject(true);
   currentMessage = this.messageSource.asObservable();
 
@@ -47,16 +57,6 @@ export class AppService {
   getBtnStatus = this.messageSource1.asObservable();
 
   setBtnStatus(signeeComponentData :any) {
-    // let data : any = {
-    //   "status": signeeComponentData['btn'],
-    //   "btnText" : signeeComponentData['getBtnSts'],
-    //   "approveStatus":signeeComponentData['approveBtn'],
-    //   "images":signeeComponentData['images'],
-    //   "thumbnail_view":signeeComponentData['thumbnail_view'],
-    //   "active_pageId":signeeComponentData['active_pageId'],
-    //   "name": signeeComponentData['full_name'],
-    //   "tooltipText":signeeComponentData['tooltipText']
-    // }
     this.messageSource1.next(signeeComponentData);
   }
 

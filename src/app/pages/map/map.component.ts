@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, NgZone } from '@angular/core'
 import { AuthenticationService } from '../../services/authentication.service';
 import { MapsAPILoader, MouseEvent } from '@agm/core';
 import { error, element } from 'protractor';
+import { AppService } from 'src/app/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-map',
@@ -28,35 +30,29 @@ export class MapComponent implements OnInit {
 
   constructor(private authenticationService: AuthenticationService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private appService : AppService,
+    private router : Router
   ) { }
 
   ngOnInit() {
     this.getStudentAddress();
     let storageData = JSON.parse(localStorage.getItem('data'));
-    console.log(storageData);
-
     //load Places Autocomplete
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
-
       this.geoCoder = new google.maps.Geocoder;
-
       let autocomplete = new google.maps.places.Autocomplete(this.searchElementRef.nativeElement, {
         types: ["address"]
       });
       autocomplete.addListener("place_changed", () => {
-
         this.ngZone.run(() => {
-
           //get the place result
           let place: google.maps.places.PlaceResult = autocomplete.getPlace();
-
           //verify result
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
-
           //set latitude, longitude and zoom
           this.street_address = place.formatted_address;
           for (let element of place.address_components) {
@@ -81,9 +77,9 @@ export class MapComponent implements OnInit {
           this.token = storageData.Result.token;
           this.student_id = storageData.Result.student_id;
 
-
           this.zoom = 12;
           this.saveStudentAddress();
+          this.getStudentAddress();
         });
       });
     });
@@ -108,7 +104,6 @@ export class MapComponent implements OnInit {
     let postData = JSON.parse(localStorage.getItem('data'));
     if (postData != null) {
       var formDatas = "token=" + postData.Result.token + "&student_id=" + postData.Result.student_id;
-      //var formDatas = "token=d590cf148d47a7b4b4f1a3850e22e4a5fa2cea31&student_id=2";
     } else {
       var formDatas = "token=''&student_id=''";
     }
@@ -156,5 +151,13 @@ export class MapComponent implements OnInit {
       }
 
     });
+  }
+
+  getStudentAddressId(id){
+    let data = {
+      'student_address_id' : id
+    }
+    this.appService.setData(data);
+    this.router.navigate(['./teacher-profile'])
   }
 }

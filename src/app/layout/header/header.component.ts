@@ -21,33 +21,37 @@ export class HeaderComponent implements OnInit {
     this.navdrop.nativeElement.classList.toggle("visibility");
   }
 
-  constructor(private router: Router,private _eref: ElementRef) {
-
+  constructor(private router: Router, private _eref: ElementRef, private AppService: AppService) {
   }
 
-  showLogin;
+  showLogin: boolean = false;
+  status;
 
   onClick(event) {
     if (!this._eref.nativeElement.contains(event.target)) // or some similar check
-    this.navdrop.nativeElement.classList.add("visibility");
-   }
+      this.navdrop.nativeElement.classList.add("visibility");
+  }
 
   ngOnInit() {
-    if (localStorage.getItem('data') != undefined && localStorage.getItem('data') != null) {
-      this.showLogin = false;
-    }
-    else {
-      this.showLogin = true
-    }
+    this.AppService.getData.subscribe(
+      message => {
+        this.showLogin = message['show_Login']
+      }
+    );
     this.navdrop.nativeElement.classList.toggle("visibility");
   }
 
 
   logout() {
+    let statusData = {
+      'show_Login': 'true'
+    }
+    this.AppService.setData(statusData);
     // remove user from local storage and set current user to null
     localStorage.removeItem('data');
     this.router.navigate(['/login']);
   }
+
 
 
 

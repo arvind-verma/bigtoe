@@ -19,6 +19,7 @@ import { PageLoaderComponent } from './layout/page-loader/page-loader.component'
 import { Layout2Component } from './layout/layouts/layout-2/layout.component';
 import { TransferOwnershipComponent } from './transfer-ownership/transfer-ownership.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { FilterPipe } from './filter.pipe';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -33,6 +34,7 @@ export function tokenGetter() {
     Layout2Component,
     PageLoaderComponent,
     TransferOwnershipComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
