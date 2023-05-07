@@ -36,7 +36,7 @@
     "chartist-plugin-legend": "^0.6.2",
     "core-js": "^2.6.9",
     "i": "^0.3.6",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "jqvmap": "^1.5.1",
     "material-design-iconic-font": "^2.2.0",
     "ng-chartist": "^4.1.0",
